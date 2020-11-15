@@ -22,8 +22,6 @@ function setup() {
 
   ball.y = random(80, 180);
 
-  ball.bounceOff(paddle);
-
   paddle = createSprite(380, 200, 10, 70);
   paddle.addImage("paddleImage", paddleImage);
 
@@ -32,13 +30,10 @@ function setup() {
 
 function draw() {
   background(205, 153, 0);
+  
+  ball.bounceOff(paddle);
 
   edges = createEdgeSprites();
-
-  movement();
-  randomVelocity();
-
-  //console.log(edges[1]);
 
   if (ball.isTouching(paddle) || ball.isTouching(edges[0]) || ball.isTouching(edges[2]) || ball.isTouching(edges[3])) {
     ball.bounceOff(paddle);
